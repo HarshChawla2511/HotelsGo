@@ -1,0 +1,37 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="row">
+    <h1 class="text-center">Edit Hotel<h1>
+    <div class="col-6 offset-3">
+        <form action="/hotels/<%=hotel._id%>?_method=put" method="post">
+        <div class = "mb-3">
+            <label class = "form label" for="title">Title</label>
+            <input class = "form-control" type="text" id="title" name="hotel[title]" value = "<%=hotel.title%>"> <%#esa krnese all the content will be stored in hotel of req.body when we send post req%>
+        </div>
+        <div class = "mb-3">
+            <label class = "form label" for="location">Location</label>
+            <input class = "form-control" type="text" id="location" name="hotel[location]" value = "<%=hotel.location%>"> <%#esa krnese all the content will be stored in hotel of req.body when we send post req%>
+        </div>
+        <div class = "mb-3">
+            <label class = "form label" for="image">Image Url</label>
+            <input class = "form-control" type="text" id="image" name="hotel[image]" value = "<%=hotel.image%>"> <%#esa krnese all the content will be stored in hotel of req.body when we send post req%>
+        </div>
+        <div class="mb-3">
+            <label class = "form label" for="price">Hotel Price</label>
+
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">$</span>
+                <input type="text" class="form-control" id = "price" name="hotel[price]" placeholder="0.00" aria-label="Price" aria-describedby="price-label" value = "<%=hotel.price%>">
+            </div>
+        </div>
+        <div class = "mb-3">
+            <label class = "form label" for="description">Description</label>
+            <textarea class = "form-control" type="text" id="description" name="hotel[description]"><%=hotel.description%></textarea> <%#esa krnese all the content will be stored in hotel of req.body when we send post req%>
+        </div>
+        <div class="mb-3">
+            <button class= "btn btn-info">Update Hotel</button>
+        </div>
+        </form>
+        <a href="/hotels/<%=hotel._id%>">Back to Hotel</a>
+    </div>
+</div>
