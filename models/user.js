@@ -9,6 +9,6 @@ const UserSchema = new Schema({
         unique : true
     }
 });
-UserSchema.plugin(passportLocalMongoose);//passport k liye.
+UserSchema.plugin(passportLocalMongoose);//passport k liye, username salt wo sab khud krlega passport..
 
 module.exports = mongoose.model('User',UserSchema);

@@ -23,7 +23,8 @@ router.post("/", isLoggedIn, async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-const hotel = await Hotel.findById(req.params.id)
+const hotel = await Hotel.findById(req.params.id) //The req.params property is an object that contains the properties which are mapped to the named route "parameters".
+
   // populate all reviews from rreview array on hotel we are finding then populate on each one of them their author and then populate the author of hotel.
   .populate({
     path: "reviews", // see comment in review.js as review.author = req._userid
@@ -52,6 +53,13 @@ router.get("/:id/edit", isLoggedIn, async (req, res) => {
 router.put("/:id", isLoggedIn, async (req, res) => {
   //res.send("IT Worked");
   const { id } = req.params;
+
+  //Authorization
+  if(req.user._id != "64b57c10add48b15c5592e2a"){
+    req.flash('error','You dont not have permission to do that !');
+    return res.redirect(`/hotels/${id}`);
+  }
+
   const hotel = await Hotel.findByIdAndUpdate(id, { ...req.body.hotel });
   req.flash("success", "Successfully Updated Hotel !");
   res.redirect(`/hotels/${hotel._id}`);
@@ -59,6 +67,12 @@ router.put("/:id", isLoggedIn, async (req, res) => {
 
 router.delete("/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
+
+  //Authorization
+  if (req.user._id != "64b57c10add48b15c5592e2a") {
+    req.flash("error", "You dont not have permission to do that !");
+    return res.redirect(`/hotels/${id}`);
+  }
   await Hotel.findByIdAndDelete(id);
   req.flash("success", "Successfully Deleted Hotel !");
   res.redirect("/hotels/");

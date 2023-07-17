@@ -14,14 +14,16 @@
       <li class="list-group-item">Submitted by <%= hotel.author.username%></li>
       <li class="list-group-item"><%= hotel.price%>/person</li>
     </ul>
-    <% if(currentUser && hotel.author.equals(currentUser._id)) { %>
+    <%# if(currentUser && hotel.author.equals(currentUser._id)) { %>
+      
+       <%# && ( currentUser._id =="64b57c10add48b15c5592e2a" )%>
     <div class="card-body">
         <a class="card-link btn btn-primary" href="/hotels/<%=hotel._id%>/edit">Edit</a>
         <form class="d-inline" action="/hotels/<%=hotel._id%>?_method=Delete" method = "post">
             <button class="btn btn-danger ">Delete</button>
         </form>
     </div>
-    <% } %>
+    <%# } %>
     <div class="card-footer text-muted">
       <a href="/hotels" class="text-dark">Back to All Hotels</a>
     </div>
@@ -29,7 +31,7 @@
   
   </div>
   <div class="col-4">
-    <% if(currentUser) { %>
+    <%# if(currentUser) { %>
       <h2>Leave a review !</h2>
     <form action="/hotels/<%=hotel._id%>/reviews" method="post" class="mb-3">
       <div class="mb-3">
@@ -42,8 +44,7 @@
       </div>
       <button class="btn btn-success">Submit</button>
     </form>
-    <% } %>
-    
+    <%# } %>
       <% for(let review of hotel.reviews){ %>
       <div class="card mb-3">
         <div class="card-body">

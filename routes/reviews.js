@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router({mergeParams : true}); //karna padhta nahi to id nahi lera wo router.
 const Review = require("../models/review");
 const Hotel = require("../models/hotel");
+const { isLoggedIn } = require("../middleware");
 
-router.post("/", async (req, res) => {
+router.post("/",isLoggedIn, async (req, res) => {
   const hotel = await Hotel.findById(req.params.id);
   const review = new Review(req.body.review);
   hotel.reviews.push(review);
@@ -16,7 +17,7 @@ router.post("/", async (req, res) => {
 
 router.delete("/:reviewId", async (req, res) => {
   //res.send("IT worked!")
-  const { id, reviewId } = req.params;
+  const { id, reviewId } = req.params;  // id hotel ki hai , reviewId review ki hai.
   await Hotel.findByIdAndUpdate(id, { $pull: { reviews: reviewId } }); //pull operator revies array  me review Id lenga aur usko pull krlenga hotel id jo passki usmese.
   await Review.findByIdAndDelete(reviewId);
   req.flash("success", "Successfully deleted hotel !");

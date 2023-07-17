@@ -37,7 +37,7 @@ const app = express();
 app.engine('ejs',ejsmate)
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'))
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));  // serving static website.
 
 
 app.use(express.urlencoded({ extended: true })); // to parse upar ki post req.
@@ -65,7 +65,7 @@ const sessionConfig = {
   cookie: {
     httpOnly : true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // becuase date is in milliseconds.
-    maxAge: 1000 * 60 * 60 * 24 * 7//7 dayys me session expire.
+    maxAge: 1000 * 60 * 60 * 24 * 500//5 dayys me session expire.
   }
 } //resave aur saveuninitalized igrnore kro(secret me bhi kuch hai nai aabtk to)
 
@@ -81,14 +81,14 @@ passport.serializeUser(User.serializeUser());//Tells passpirt hiw ti serialize a
 passport.deserializeUser(User.deserializeUser()); // How do you get a user out of the session.
 
 app.use((req,res,next) =>{
-  res.locals.currentUser = req.user;
+  res.locals.currentUser = req.user;  //req.user user ki saaari info de dega (passport k wajahse).
   res.locals.success = req.flash("success");
-  res.locals.error = req.flash("error");
+  res.locals.error = req.flash("error"); // Saare views ke response ke part ko include krlega.
   next();
 })
-
-
-app.use('/',userRoutes)
+//res.locals is an object that is available in Node.js applications that use the Express framework. It is a way to store information that is local to the current request/response cycle.
+////Overall, res.locals provides a convenient way to pass data from your server-side code to your view templates without having to manually pass it as a variable to every template.
+app.use('/',userRoutes)   
 app.use('/hotels',hotelRoutes)
 app.use("/hotels/:id/reviews", reviewRoutes);
 

@@ -18,6 +18,10 @@ const HotelSchema = new Schema({
         ref : 'Review'   
         }
     ]
+//     The type attribute specifies the data type of the reference field, which in this case is ObjectId. The ObjectId data type is a unique identifier assigned to each document when it is inserted into a MongoDB collection. By using the ObjectId data type for the reference field, we can refer to other documents in the collection using their unique _id values.
+
+// The ref attribute specifies the name of the referenced collection, which in this case is 'User'. This tells Mongoose which collection to query when populating the reference field. When you call the .populate() method on a query, Mongoose will use the ref attribute to determine which collection to query for the referenced documents.
+
 });
 //middleware for if a hotel is deleted then all the reviews related to it ust be deleted too.
 HotelSchema.post('findOneAndDelete',async function(doc){  // when findByIdAndDelete is executed this middleware function is triggered (findOneAndDelete) as per mongoose middleware 
