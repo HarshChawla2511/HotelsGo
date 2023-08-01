@@ -33,7 +33,7 @@ const hotel = await Hotel.findById(req.params.id) //The req.params property is a
     },
   })
   .populate("author");
-console.log(hotel); // populate is being used in reviews.populate krnese hotel const ko info mil jaegi review, author/user ki
+// console.log(hotel); // populate is being used in reviews.populate krnese hotel const ko info mil jaegi review, author/user ki
   if(!hotel){
     req.flash('error','Cannot find that Hotel !');
     return res.redirect('/hotels');
@@ -60,7 +60,7 @@ router.put("/:id", isLoggedIn, async (req, res) => {
     return res.redirect(`/hotels/${id}`);
   }
 
-  const hotel = await Hotel.findByIdAndUpdate(id, { ...req.body.hotel });
+  const hotel = await Hotel.findByIdAndUpdate(id, { ...req.body.hotel }); //{ ...req.body.hotel }: The spread syntax { ... } is used to create a shallow copy of the req.body.hotel object. It essentially creates a new object with the same properties and values as the original req.body.hotel object.
   req.flash("success", "Successfully Updated Hotel !");
   res.redirect(`/hotels/${hotel._id}`);
 });

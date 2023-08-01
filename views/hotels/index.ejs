@@ -1,23 +1,21 @@
 <% layout('layouts/boilerplate')%>
     <link rel="stylesheet" href="/stylesheets/index.css">
-    <h1 class="text-center">Best Hotels in the town !!</h1>
+    <h1>Explore Top Hotels !!</h1>
     <div class="mb-3">
-        <a class ="btn btn-secondary" href="/hotels/new">Add a Hotel</a>
+        <!-- <a class ="btn btn-secondary" href="/hotels/new">Add a Hotel</a> -->
     </div>
    <div class="mb-3">
        <% for(let hotel of hotels){%>
            <div class="card" >
                <div class="row">
                    <div class="col-md-4">
-                       <img class="img-fluid" alt="" src = "<%=hotel.image%>">
+                       <img class=" card-img img-fluid" alt="" src = "<%=hotel.image%>">
                    </div>
                    <div class="col-md-8">
                        <div class="card-body">
                            <h5 class="card-title"><%= hotel.title%></h5>
                            <p class ="card-text"><%= hotel.description%></p>
-                           <p class ="card-text">
-                               <small class = "text-muted"><%= hotel.location%></small>
-                           </p>
+                           <p class ="card-text"><%= hotel.location%> <i class="bi bi-geo-alt-fill"></i> </p>
                            <a class="btn btn-primary" href="/hotels/<%=hotel._id%>">View <%=hotel.title%></a>
                        </div>
                    </div>

@@ -11,7 +11,7 @@ router.post("/register", async (req, res) => {
   const {email,username,password} = req.body;
   const user = new User({email,username});
   const registetredUser = await User.register(user,password);
-  console.log(registetredUser);
+  // console.log(registetredUser);
   req.flash('success','Welcome to Hotel Hunt !');
   res.redirect('/hotels');
 });
@@ -24,6 +24,7 @@ router.get("/login", (req, res) => {
 
 router.post("/login",passport.authenticate('local',{failureFlash : true, failureRedirect : '/login'}),(req, res) => {   // authenticate(strategy like google etc) Here it is local!
   //failure flash wo khud hi inbuilt hai so aayega flash .Compare wo sab khud hota
+  console.log(req.session);
   req.flash("success", "Welcome back to Hotel Hunt !");
   res.redirect("/hotels");
 });

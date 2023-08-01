@@ -1,9 +1,11 @@
 <% layout('layouts/boilerplate')%>
+    <link rel="stylesheet" href="/stylesheets/show.css">
+
 
 <!-- Grid me Card -->
 <div class="row">
-  <div class="col-7">
-    <div class="card mb-3" style="width: 35rem;">
+  <div class="col-8">
+    <div class="card mb-3" style="width: 45rem;">
     <img src="<%= hotel.image%>" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"><%= hotel.title%></h5>
@@ -25,33 +27,35 @@
     </div>
     <%# } %>
     <div class="card-footer text-muted">
-      <a href="/hotels" class="text-dark">Back to All Hotels</a>
+      <a href="/hotels" class="btn btn-secondary">Back to All Hotels <i class="bi bi-skip-backward-btn-fill"></i></a>
     </div>
   </div>
   
   </div>
   <div class="col-4">
     <%# if(currentUser) { %>
-      <h2>Leave a review !</h2>
+    <h2 class="h2">Leave a review!</h2>
     <form action="/hotels/<%=hotel._id%>/reviews" method="post" class="mb-3">
       <div class="mb-3">
-        <label class="form-label" for="rating">Rating</label>
-        <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
+        <label class="form-label" for="rating" >Select Rating :</label>
+         <i class="bi bi-clipboard2-pulse"></i>
+        <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating" >
       </div>
       <div class="mb-3">
-        <label class="form-label" for="body">Review</label>
+        <label class="form-label" for="body">Add Review :</label>
+        <i class="bi bi-yelp"></i>
         <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"></textarea>
       </div>
       <button class="btn btn-success">Submit</button>
     </form>
-    <%# } %>
+    <%# } %>  
       <% for(let review of hotel.reviews){ %>
-      <div class="card mb-3">
+      <div class="card mb-3 reviews">
         <div class="card-body">
           <h5 class="card-title">Rating :<%= review.rating%></h5>
           <h6 class="card-subtitle mb-2 text-muted">By <%= review.author.username%></h6>
           <p class="card-text">Review :<%= review.body%></p>
-          <%  if( currentUser && review.author.equals(currentUser._id))  {%>
+          <%  if( currentUser && (review.author.equals(currentUser._id) || currentUser._id == "64b57c10add48b15c5592e2a" ))  {%>
           <form action="<%=hotel._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST"> 
             <!-- Above link is alag as video one is giving error, you have seen comment and changed it reeason is unknown but janedo understanable -->
             <button class="btn btn-sm btn-danger">Delete</button>

@@ -30,7 +30,16 @@ body {
 
 }
 
-.btn-secondary, .btn-secondary:hover{
+.btn-secondary{
     color: #333;
-    text-shadow: none;
+    background-color: antiquewhite;
+    height: 50px;
+    font-size: x-large;
 }
+
+.btn-secondary:hover{
+    background-color:black; 
+    text-shadow: black 0px 1px;
+    color: white;
+}
+
