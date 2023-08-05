@@ -1,23 +1,25 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">HotelHunt</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/hotels">Hotels</a>
-            <a class="nav-link" href="/hotels/new">New Hotel</a>
-        </div>
-        <div class="navbar-nav ml-auto">
-            <% if(!currentUser) {%>
-            <a class="nav-link" href="/login">Login</a>
-            <a class="nav-link" href="/register">Register</a>
-            <% }else { %>
-            <a class="nav-link" href="/logout">Logout</a>
-            <% } %>
-        </div>
-        </div>
+<link rel="stylesheet" href="/stylesheets/navbar.css">
+
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark custom-navbar">
+  <div class="container-fluid custom-container">
+    <a class="navbar-brand custom-brand " href="#">HotelHunt</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse  id="navbarNavAltMarkup">
+      <div class="navbar-nav custom-nav">
+        <a class="nav-link active" href="/">Home</a>
+        <a class="nav-link" href="/hotels">Hotels</a>
+        <a class="nav-link" href="/hotels/new">New Hotel</a>
+      </div>
+      <div class="navbar-nav custom-nav ml-auto">
+        <% if(!currentUser) {%>
+        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/register">Register</a>
+        <% } else { %>
+        <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
+      </div>
     </div>
-    </nav>
+  </div>
+</nav>

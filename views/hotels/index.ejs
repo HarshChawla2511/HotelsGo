@@ -1,10 +1,8 @@
 <% layout('layouts/boilerplate')%>
     <link rel="stylesheet" href="/stylesheets/index.css">
     <h1>Explore Top Hotels !!</h1>
-    <div class="mb-3">
-        <!-- <a class ="btn btn-secondary" href="/hotels/new">Add a Hotel</a> -->
-    </div>
-   <div class="mb-3">
+    
+   <div class="mb-3" style="padding-top: 280px;">
        <% for(let hotel of hotels){%>
            <div class="card" >
                <div class="row">
@@ -16,7 +14,7 @@
                            <h5 class="card-title"><%= hotel.title%></h5>
                            <p class ="card-text"><%= hotel.description%></p>
                            <p class ="card-text"><%= hotel.location%> <i class="bi bi-geo-alt-fill"></i> </p>
-                           <a class="btn btn-primary" href="/hotels/<%=hotel._id%>">View <%=hotel.title%></a>
+                           <a class="btn" style="background: linear-gradient(#E0EAFC,#CFDEF3); font-weight:500 ;" href="/hotels/<%=hotel._id%>">View <%=hotel.title%></a>
                        </div>
                    </div>
                </div>

@@ -2,35 +2,29 @@
 
 body{
   background-color: #f0f0f0;
-background-image: url("https://www.transparenttextures.com/patterns/connected.png");
+  background-image: url("https://www.transparenttextures.com/patterns/connected.png");
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 h1 {
-  /* justify-content: center;
-  position: relative;
-  color: Dark;
-  font-weight: bold;
-  font-family: "Anonymous Pro", monospace;
-  letter-spacing: 7px;
-  overflow: hidden; 
-  border-right: 2px solid hsl(0, 0%, 90%);
-  white-space: nowrap;
-  animation: typewriter 4s steps(44) 1s 1 normal both,
-  blinkTextCursor 500ms infinite; */
-
+  
     font-family: "Arial Black", sans-serif;
     font-size: 48px;
-    color: #000000;
+    color: white;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #000000, #2541f9);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 10px;
+    background: linear-gradient(45deg, #0F2027, #203A43,#2C5364);
+    padding: 80px;
+    position: absolute;
+    /* margin-top: 5px; */
+    top: 65px;
+    left: 0;
+    right: 0; 
+    /* margin-bottom: 30px; */
 }
 
 .card {
+    bottom: 50px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

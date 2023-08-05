@@ -1,0 +1,32 @@
+CSS to center navbar headings and increase navbar size
+
+.custom-navbar {
+  height: 80px; /* Adjust this value to increase the navbar height */
+}
+
+.custom-container {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100%;
+}
+
+.custom-brand {
+  font-size: 30px;
+  align-items: center;
+  left: 20%;
+  /* justify-content: center;  */
+  /* Adjust this value as needed */
+  /* Add any other styles for the navbar brand */
+}
+
+.custom-nav {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.custom-nav .nav-link {
+  font-size: 20px; /* Adjust this value as needed */
+  /* Add any other styles for the nav links */
+}
