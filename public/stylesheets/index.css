@@ -72,3 +72,13 @@ h1 {
   height: 300px;
   object-fit: cover;
 }
+
+.btn{
+  background: linear-gradient(#E0EAFC,#CFDEF3); 
+  font-weight: 600;
+}
+
+.btn:hover{
+  color: white;
+  background:black;
+}
